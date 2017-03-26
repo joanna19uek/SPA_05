@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Create DOM elements</title>
+		<meta charset="UTF-8">
+        <style>
+            td {
+                padding-left: 5px;
+                padding-right: 10px
+            }
+        </style>
+	</head>
+	<body>
+		<script>
+			
+			var table = document.createElement("table");
+            table.setAttribute("border", "1");
+            table.style.borderCollapse = "collapse";
+            
+            document.body.appendChild(table);
+            
+            var parentTable = document.getElementsByTagName("table")[0];
+            
+            
+            var rows = [];
+            
+            for(i = 0; i < 5; i++) {
+                rows[i] = parentTable.appendChild(document.createElement("tr"));
+            }
+            
+            var parentRow = document.getElementsByTagName("tr");
+            
+            var cells = [];
+            
+            var col1Text = ["Email", "receive/get/open email", "exchange email addresses", "open/send/contain an attachment",
+                            "open/check your inbox"];
+            
+            var col2Text = ["Connecting to the Internet", "use/access/log onto the Internet", "access/connect to/locate the server",
+                            "browse/surf/search/scour the Internet", "install/use/configure a firewall"];
+            
+            for(i = 0; i < 5; i++) {
+                cells[i] = parentRow[i].appendChild(document.createElement("td"));
+                cells[i].appendChild(document.createTextNode(col1Text[i]));
+            }
+            
+            for(i = 0; i < 5; i++) {
+                cells[i + 5] = parentRow[i].appendChild(document.createElement("td"));
+                cells[i + 5].appendChild(document.createTextNode(col2Text[i]));
+            }
+            
+            cells[0].style.backgroundColor = "rgb(175,175,175)";
+            cells[0].style.fontWeight = "bold";
+            
+            cells[5].style.backgroundColor = "rgb(175,175,175)";
+            cells[5].style.fontWeight = "bold";
+		</script>
+	</body>
+</html>
